@@ -1,0 +1,13 @@
+# Editors
+.vscode
+.atom
+.idea
+
+# Cache
+__pycache__
+
+# Database
+*.db
+
+# MISC
+.DS_Store
