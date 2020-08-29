@@ -9,8 +9,8 @@ class TestUrlModel(TestCase):
 
         testing_url = "http://example.com"
 
-        url = Url(url=testing_url)
-        url_hash = url.generate_hash()
+        url = Url.objects.create(url=testing_url)
+        url_hash = url.url_hash
 
         self.assertIsInstance(url_hash, str)
 
@@ -19,12 +19,9 @@ class TestUrlModel(TestCase):
 
         testing_url = "http://example.com"
 
-        url = Url(url=testing_url)
-        url_hash = url.generate_hash()
+        url = Url.objects.create(url=testing_url)
+        url_hash = url.url_hash
 
-        url.url_hash = url_hash
-        url.save()
+        url_in_db = Url.get_full_url(url_hash)
 
-        found_url = Url.get_full_url(url_hash)
-
-        self.assertEqual(found_url, testing_url)
+        self.assertEqual(url_in_db, testing_url)

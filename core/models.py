@@ -27,6 +27,6 @@ class Url(models.Model):
 
     @classmethod
     def get_full_url(cls, url_hash=None):
-        url = cls.objects.filter(url_hash=url_hash).first()
+        url = cls.objects.get(url_hash=url_hash)
 
         return url.url
