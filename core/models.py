@@ -24,9 +24,3 @@ class Url(models.Model):
         self.url_hash = self.generate_hash()
 
         super(Url, self).save(*args, **kwargs)
-
-    @classmethod
-    def get_full_url(cls, url_hash=None):
-        url = cls.objects.get(url_hash=url_hash)
-
-        return url.url
